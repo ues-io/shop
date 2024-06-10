@@ -2,5 +2,5 @@ name: initials
 label: Initials
 type: FORMULA
 formula:
-  expression: FIRST(usio/pay.name)
+  expression: FIRST(usio/shop.name)
   returntype: TEXT

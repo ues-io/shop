@@ -8,13 +8,13 @@ type SubmitTokenResponse = {
 export default function buy_product(bot: ListenerBotApi) {
 	// Load in current product information
 	const productResult = bot.load({
-		collection: "usio/pay.product",
+		collection: "usio/shop.product",
 		fields: [
 			{
-				id: "usio/pay.name",
+				id: "usio/shop.name",
 			},
 			{
-				id: "usio/pay.price",
+				id: "usio/shop.price",
 			},
 		],
 		conditions: [
@@ -34,7 +34,7 @@ export default function buy_product(bot: ListenerBotApi) {
 
 	const result = bot.runIntegrationAction("usio/pay.usio", "submit_token", {
 		token: bot.params.get("token"),
-		amount: productResultItem["usio/pay.price"] + "",
+		amount: productResultItem["usio/shop.price"] + "",
 		secondaryAmount: 1.99 + "",
 		firstName: bot.params.get("firstName"),
 		lastName: bot.params.get("lastName"),
@@ -42,20 +42,20 @@ export default function buy_product(bot: ListenerBotApi) {
 		city: bot.params.get("city"),
 		state: bot.params.get("state"),
 		zip: bot.params.get("zip"),
-		description: productResultItem["usio/pay.name"],
+		description: productResultItem["usio/shop.name"],
 	}) as SubmitTokenResponse
 
 	// create an order
 	// Since we were successful, create an order record with the transaction id.
-	const orderResult = bot.save("usio/pay.order", [
+	const orderResult = bot.save("usio/shop.order", [
 		{
-			"usio/pay.transaction": {
+			"usio/shop.transaction": {
 				"uesio/core.id": result.transactionid,
 			},
-			"usio/pay.product": {
+			"usio/shop.product": {
 				"uesio/core.id": bot.params.get("product"),
 			},
-			"usio/pay.amount": productResultItem["usio/pay.price"],
+			"usio/shop.amount": productResultItem["usio/shop.price"],
 		},
 	] as unknown as WireRecord[])
 

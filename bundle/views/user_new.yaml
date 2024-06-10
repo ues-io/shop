@@ -27,14 +27,14 @@ definition:
           value: PERSON
         - field: uesio/core.profile
           valueSource: VALUE
-          value: usio/pay.admin
+          value: usio/shop.admin
   # Components determine the layout and composition of your view
   components:
     - uesio/io.viewlayout:
         left:
-          - uesio/crm.nav:
+          - usio/shop.nav:
         content:
-          - uesio/crm.detail_split:
+          - uesio/appkit.detail_split:
               main:
                 - uesio/io.list:
                     wire: user
@@ -44,7 +44,7 @@ definition:
                       - uesio/io.titlebar:
                           title: New User
                           subtitle: $RecordMeta{name}
-                          uesio.variant: usio/pay.main
+                          uesio.variant: uesio/appkit.main
                           avatar:
                             - uesio/io.text:
                                 text: badge
@@ -61,11 +61,11 @@ definition:
                                           path: user/detail/${uesio/core.id}
                                       text: Create User
                                       hotkey: "meta+s"
-                                      uesio.variant: usio/pay.primary
+                                      uesio.variant: uesio/appkit.primary
                                   - uesio/io.button:
                                       signals:
                                         - signal: wire/RESET
                                           wire: user
                                       text: Reset
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                       - uesio/crm.user_primary_section:

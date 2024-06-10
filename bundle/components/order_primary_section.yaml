@@ -5,15 +5,15 @@ definition:
   - uesio/io.box:
       components:
         - uesio/io.grid:
-            uesio.variant: usio/pay.two_columns
+            uesio.variant: uesio/appkit.two_columns
             items:
               - uesio/io.field:
-                  fieldId: usio/pay.product
+                  fieldId: usio/shop.product
               - uesio/io.field:
-                  fieldId: usio/pay.transaction
+                  fieldId: usio/shop.transaction
               - uesio/io.field:
-                  fieldId: usio/pay.amount
-      uesio.variant: usio/pay.primarysection
+                  fieldId: usio/shop.amount
+      uesio.variant: uesio/appkit.primarysection
 title: Order Primary Section
 discoverable: true
 description: Order Primary Section

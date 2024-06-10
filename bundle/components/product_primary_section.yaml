@@ -5,22 +5,22 @@ definition:
   - uesio/io.box:
       components:
         - uesio/io.grid:
-            uesio.variant: usio/pay.two_columns
+            uesio.variant: uesio/appkit.two_columns
             items:
               - uesio/io.field:
-                  fieldId: usio/pay.name
+                  fieldId: usio/shop.name
               - uesio/io.field:
-                  fieldId: usio/pay.price
+                  fieldId: usio/shop.price
               - uesio/io.field:
-                  fieldId: usio/pay.slug
+                  fieldId: usio/shop.slug
               - uesio/io.field:
-                  fieldId: usio/pay.published
+                  fieldId: usio/shop.published
               - uesio/io.field:
                   uesio.styleTokens:
                     wrapper:
                       - col-span-2
-                  fieldId: usio/pay.description
-      uesio.variant: usio/pay.primarysection
+                  fieldId: usio/shop.description
+      uesio.variant: uesio/appkit.primarysection
 title: Product Primary Section
 discoverable: true
 description: Product Primary Section

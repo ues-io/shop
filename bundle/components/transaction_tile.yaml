@@ -3,10 +3,10 @@ category: LAYOUT
 type: DECLARATIVE
 definition:
   - uesio/io.tile:
-      uesio.variant: usio/pay.item
+      uesio.variant: uesio/appkit.item
       content:
         - uesio/io.titlebar:
-            uesio.variant: usio/pay.item
+            uesio.variant: uesio/appkit.item
             title: ${firstname} ${lastname}
             subtitle: ${description}
             actions:
@@ -14,7 +14,7 @@ definition:
                   uesio.display:
                     - type: hasValue
                       value: $Prop{showAmountInfo}
-                  uesio.variant: usio/pay.subitem
+                  uesio.variant: uesio/appkit.subitem
                   uesio.styleTokens:
                     content:
                       - text-right
@@ -27,7 +27,7 @@ definition:
                   subtitle: $Date{uesio/core.createdat}
       avatar:
         - uesio/io.text:
-            uesio.variant: usio/pay.avatariconoutline
+            uesio.variant: uesio/appkit.avatariconoutline
             text: credit_card
       signals:
         - signal: route/NAVIGATE_TO_ASSIGNMENT

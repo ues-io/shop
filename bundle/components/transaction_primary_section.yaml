@@ -5,7 +5,7 @@ definition:
   - uesio/io.box:
       components:
         - uesio/io.grid:
-            uesio.variant: usio/pay.two_columns
+            uesio.variant: uesio/appkit.two_columns
             items:
               - uesio/io.field:
                   fieldId: usio/pay.firstname
@@ -19,7 +19,7 @@ definition:
                   fieldId: usio/pay.amount
               - uesio/io.field:
                   fieldId: usio/pay.secondary_amount
-      uesio.variant: usio/pay.primarysection
+      uesio.variant: uesio/appkit.primarysection
 title: Transaction Primary Section
 discoverable: true
 description: Transaction Primary Section

@@ -19,25 +19,25 @@ definition:
   components:
     - uesio/io.viewlayout:
         left:
-          - usio/pay.nav:
+          - usio/shop.nav:
         content:
           - uesio/io.titlebar:
               title: $Collection{transaction:pluralLabel}
               subtitle: List View
-              uesio.variant: usio/pay.main
+              uesio.variant: uesio/appkit.main
               avatar:
                 - uesio/io.text:
                     uesio.variant: uesio/io.icon
                     text: credit_card
           - uesio/io.box:
-              uesio.variant: usio/pay.primarysection
+              uesio.variant: uesio/appkit.primarysection
               components:
                 - uesio/io.toolbar:
                     linkedComponentType: uesio/io.table
                     linkedComponentId: transactionTable
                     left:
                       - uesio/io.searchbox:
-                          uesio.variant: usio/pay.main
+                          uesio.variant: uesio/appkit.main
                           wire: transaction
                           placeholder: Search Transactions
                           searchFields:
@@ -45,7 +45,7 @@ definition:
                             - usio/pay.firstname
                             - usio/pay.lastname
                 - uesio/io.table:
-                    uesio.variant: usio/pay.main
+                    uesio.variant: uesio/appkit.main
                     rowactions:
                       - icon: visibility
                         text: View

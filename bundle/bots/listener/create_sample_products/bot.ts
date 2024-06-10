@@ -76,14 +76,14 @@ export default function create_sample_products(bot: ListenerBotApi) {
 		},
 	]
 	const productresult = bot.save(
-		"usio/pay.product",
+		"usio/shop.product",
 		sampleProductData.map((sample) => ({
-			"usio/pay.name": sample.name,
-			"usio/pay.description": sample.description,
-			"usio/pay.price": sample.price,
-			"usio/pay.slug": sample.slug,
-			"usio/pay.published": sample.published,
-			"usio/pay.externalid": sample.externalid,
+			"usio/shop.name": sample.name,
+			"usio/shop.description": sample.description,
+			"usio/shop.price": sample.price,
+			"usio/shop.slug": sample.slug,
+			"usio/shop.published": sample.published,
+			"usio/shop.externalid": sample.externalid,
 		})) as unknown as WireRecord[],
 		{
 			upsert: true,
@@ -92,11 +92,11 @@ export default function create_sample_products(bot: ListenerBotApi) {
 	sampleProductData.forEach((sample, index) => {
 		if (sample.imagepath) {
 			bot.copyFile(
-				"usio/pay.productpics",
+				"usio/shop.productpics",
 				"images/" + sample.imagepath,
-				"usio/pay.product",
+				"usio/shop.product",
 				productresult[index]["uesio/core.id"] as string,
-				"usio/pay.image"
+				"usio/shop.image"
 			)
 		}
 	})

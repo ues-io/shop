@@ -26,7 +26,7 @@ definition:
                         height: 32
                         file: uesio/core.logowhite
                     - uesio/builder.icontile:
-                        title: Usio Pay
+                        title: Usio Shop
                         icon: bubble_chart
                         iconcolor: "#fb7185"
                         tileVariant: uesio/builder.apptag
@@ -125,13 +125,13 @@ definition:
                                     text: sell
                               signals:
                                 - signal: route/NAVIGATE_TO_ASSIGNMENT
-                                  collection: usio/pay.product
+                                  collection: usio/shop.product
                                   viewtype: list
                           - uesio/io.tile:
-                              uesio.variant: usio/pay.navadd
+                              uesio.variant: uesio/appkit.navadd
                               signals:
                                 - signal: route/NAVIGATE_TO_ASSIGNMENT
-                                  collection: usio/pay.product
+                                  collection: usio/shop.product
                                   viewtype: createnew
                     - uesio/io.box:
                         uesio.styleTokens:
@@ -155,7 +155,7 @@ definition:
                                     text: shopping_cart
                               signals:
                                 - signal: route/NAVIGATE_TO_ASSIGNMENT
-                                  collection: usio/pay.order
+                                  collection: usio/shop.order
                                   viewtype: list
                     - uesio/io.box:
                         uesio.styleTokens:
@@ -204,13 +204,13 @@ definition:
                         image: $User{picture}
                   actions:
                     - uesio/io.button:
-                        uesio.variant: usio/pay.navicon
+                        uesio.variant: uesio/appkit.navicon
                         icon: logout
                         uesio.id: logout
                         signals:
                           - signal: "user/LOGOUT"
                     - uesio/io.button:
-                        uesio.variant: usio/pay.navicon
+                        uesio.variant: uesio/appkit.navicon
                         uesio.id: user-profile
                         icon: account_circle
                         signals:

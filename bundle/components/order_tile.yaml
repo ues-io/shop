@@ -3,18 +3,18 @@ category: LAYOUT
 type: DECLARATIVE
 definition:
   - uesio/io.tile:
-      uesio.variant: usio/pay.item
+      uesio.variant: uesio/appkit.item
       content:
         - uesio/io.titlebar:
-            uesio.variant: usio/pay.item
+            uesio.variant: uesio/appkit.item
             title: ${product->name}
-            subtitle: ${transaction->firstname} ${transaction->lastname}
+            subtitle: ${transaction->usio/pay.firstname} ${transaction->usio/pay.lastname}
             actions:
               - uesio/io.titlebar:
                   uesio.display:
                     - type: hasValue
                       value: $Prop{showAmountInfo}
-                  uesio.variant: usio/pay.subitem
+                  uesio.variant: uesio/appkit.subitem
                   uesio.styleTokens:
                     content:
                       - text-right
@@ -31,7 +31,7 @@ definition:
             image: $UserFile{product->image}
       signals:
         - signal: route/NAVIGATE_TO_ASSIGNMENT
-          collection: usio/pay.order
+          collection: usio/shop.order
           viewtype: detail
           recordid: ${uesio/core.id}
 title: Order Tile Component

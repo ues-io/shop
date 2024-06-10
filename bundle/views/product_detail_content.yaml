@@ -3,15 +3,15 @@ definition:
   # Wires connect to data in collections
   wires:
     product:
-      collection: usio/pay.product
+      collection: usio/shop.product
       fields:
-        usio/pay.name:
-        usio/pay.description:
-        usio/pay.image:
-        usio/pay.price:
-        usio/pay.initials:
-        usio/pay.slug:
-        usio/pay.published:
+        usio/shop.name:
+        usio/shop.description:
+        usio/shop.image:
+        usio/shop.price:
+        usio/shop.initials:
+        usio/shop.slug:
+        usio/shop.published:
         uesio/core.updatedby: {}
         uesio/core.updatedat: {}
         uesio/core.createdby: {}
@@ -28,16 +28,16 @@ definition:
           - type: paramIsSet
             param: recordid
         components:
-          - usio/pay.detail_split:
+          - uesio/appkit.detail_split:
               main:
                 - uesio/io.list:
                     wire: product
                     uesio.id: productList
                     components:
                       - uesio/io.titlebar:
-                          title: ${usio/pay.name}
+                          title: ${usio/shop.name}
                           subtitle: $Collection{label}
-                          uesio.variant: usio/pay.main
+                          uesio.variant: uesio/appkit.main
                           actions:
                             - uesio/io.toolbar:
                                 right:
@@ -48,7 +48,7 @@ definition:
                                       text: View Listing
                                       icon: visibility
                                       iconFill: false
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                                       uesio.display:
                                         - type: mergeValue
                                           value: EDIT
@@ -68,7 +68,7 @@ definition:
                                           componentid: productList
                                       text: Save
                                       hotkey: "meta+s"
-                                      uesio.variant: usio/pay.primary
+                                      uesio.variant: uesio/appkit.primary
                                       uesio.display:
                                         - type: group
                                           conjunction: OR
@@ -81,7 +81,7 @@ definition:
                                         - signal: wire/CANCEL
                                           wire: product
                                       text: Cancel
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                                       uesio.display:
                                         - type: wireHasChanges
                                           operator: EQUALS
@@ -96,7 +96,7 @@ definition:
                                       text: Edit
                                       icon: edit_square
                                       iconFill: false
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                                       uesio.display:
                                         - type: mergeValue
                                           value: EDIT
@@ -121,35 +121,35 @@ definition:
                                       icon: task_alt
                                       iconFill: false
                                       text: Read
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                           avatar:
                             - uesio/io.menu:
-                                uesio.variant: usio/pay.upload
+                                uesio.variant: uesio/appkit.upload
                                 arrow: true
                                 closeButton: true
                                 trigger:
                                   - uesio/io.avatar:
-                                      uesio.variant: usio/pay.main
+                                      uesio.variant: uesio/appkit.main
                                       text: ${initials}
-                                      image: $UserFile{usio/pay.image}
+                                      image: $UserFile{usio/shop.image}
                                 content:
                                   - uesio/io.box:
                                       components:
                                         - uesio/io.titlebar:
-                                            uesio.variant: usio/pay.sub
+                                            uesio.variant: uesio/appkit.sub
                                             title: Upload or Delete Product Image
                                         - uesio/io.field:
                                             labelPosition: none
                                             uesio.context:
                                               fieldMode: EDIT
-                                            fieldId: usio/pay.image
+                                            fieldId: usio/shop.image
                                             displayAs: IMAGE
-                      - usio/pay.product_primary_section:
-                      - usio/pay.audit_info_section:
-                      - usio/pay.delete_section:
+                      - usio/shop.product_primary_section:
+                      - uesio/appkit.audit_info_section:
+                      - uesio/appkit.delete_section:
               left:
                 - uesio/io.tabs:
-                    uesio.variant: usio/pay.main
+                    uesio.variant: uesio/appkit.main
                     tabs:
                       - id: orders
                         label: Orders
@@ -166,4 +166,4 @@ definition:
     recordid:
       type: RECORD
       required: true
-      collection: usio/pay.product
+      collection: usio/shop.product

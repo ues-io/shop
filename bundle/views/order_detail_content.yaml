@@ -3,11 +3,11 @@ definition:
   # Wires connect to data in collections
   wires:
     order:
-      collection: usio/pay.order
+      collection: usio/shop.order
       fields:
-        usio/pay.amount:
-        usio/pay.product:
-        usio/pay.transaction:
+        usio/shop.amount:
+        usio/shop.product:
+        usio/shop.transaction:
         uesio/core.updatedby: {}
         uesio/core.updatedat: {}
         uesio/core.createdby: {}
@@ -24,7 +24,7 @@ definition:
           - type: paramIsSet
             param: recordid
         components:
-          - usio/pay.detail_split:
+          - uesio/appkit.detail_split:
               main:
                 - uesio/io.list:
                     wire: order
@@ -33,7 +33,7 @@ definition:
                       - uesio/io.titlebar:
                           title: Order Detail
                           subtitle: $Collection{label}
-                          uesio.variant: usio/pay.main
+                          uesio.variant: uesio/appkit.main
                           actions:
                             - uesio/io.toolbar:
                                 right:
@@ -49,7 +49,7 @@ definition:
                                           componentid: orderList
                                       text: Save
                                       hotkey: "meta+s"
-                                      uesio.variant: usio/pay.primary
+                                      uesio.variant: uesio/appkit.primary
                                       uesio.display:
                                         - type: group
                                           conjunction: OR
@@ -62,7 +62,7 @@ definition:
                                         - signal: wire/CANCEL
                                           wire: order
                                       text: Cancel
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                                       uesio.display:
                                         - type: wireHasChanges
                                           operator: EQUALS
@@ -77,7 +77,7 @@ definition:
                                       text: Edit
                                       icon: edit_square
                                       iconFill: false
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                                       uesio.display:
                                         - type: mergeValue
                                           value: EDIT
@@ -102,11 +102,11 @@ definition:
                                       icon: task_alt
                                       iconFill: false
                                       text: Read
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                           avatar:
-                      - usio/pay.order_primary_section:
-                      - usio/pay.audit_info_section:
-                      - usio/pay.delete_section:
+                      - usio/shop.order_primary_section:
+                      - uesio/appkit.audit_info_section:
+                      - uesio/appkit.delete_section:
               left:
     - uesio/io.box:
         uesio.variant: uesio/io.section
@@ -120,4 +120,4 @@ definition:
     recordid:
       type: RECORD
       required: true
-      collection: usio/pay.order
+      collection: usio/shop.order

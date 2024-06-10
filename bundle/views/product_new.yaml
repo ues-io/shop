@@ -3,13 +3,13 @@ definition:
   # Wires connect to data in collections
   wires:
     product:
-      collection: usio/pay.product
+      collection: usio/shop.product
       fields:
-        usio/pay.name:
-        usio/pay.description:
-        usio/pay.price:
-        usio/pay.slug:
-        usio/pay.published:
+        usio/shop.name:
+        usio/shop.description:
+        usio/shop.price:
+        usio/shop.slug:
+        usio/shop.published:
       init:
         create: true
         query: false
@@ -17,9 +17,9 @@ definition:
   components:
     - uesio/io.viewlayout:
         left:
-          - usio/pay.nav:
+          - usio/shop.nav:
         content:
-          - usio/pay.detail_split:
+          - uesio/appkit.detail_split:
               main:
                 - uesio/io.list:
                     wire: product
@@ -29,7 +29,7 @@ definition:
                       - uesio/io.titlebar:
                           title: New Product
                           subtitle: "${name}"
-                          uesio.variant: usio/pay.main
+                          uesio.variant: uesio/appkit.main
                           actions:
                             - uesio/io.group:
                                 components:
@@ -39,20 +39,20 @@ definition:
                                           wires:
                                             - product
                                         - signal: route/NAVIGATE_TO_ASSIGNMENT
-                                          collection: usio/pay.product
+                                          collection: usio/shop.product
                                           viewtype: detail
                                           recordid: ${uesio/core.id}
                                       text: Create Product
                                       hotkey: "meta+s"
-                                      uesio.variant: usio/pay.primary
+                                      uesio.variant: uesio/appkit.primary
                                   - uesio/io.button:
                                       signals:
                                         - signal: wire/RESET
                                           wire: product
                                       text: Reset
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                           avatar:
                             - uesio/io.text:
                                 uesio.variant: uesio/io.icon
                                 text: sell
-                      - usio/pay.product_primary_section:
+                      - usio/shop.product_primary_section:

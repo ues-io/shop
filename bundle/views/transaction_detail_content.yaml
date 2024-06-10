@@ -27,7 +27,7 @@ definition:
           - type: paramIsSet
             param: recordid
         components:
-          - usio/pay.detail_split:
+          - uesio/appkit.detail_split:
               main:
                 - uesio/io.list:
                     wire: transaction
@@ -36,7 +36,7 @@ definition:
                       - uesio/io.titlebar:
                           title: ${usio/pay.description}
                           subtitle: $Collection{label}
-                          uesio.variant: usio/pay.main
+                          uesio.variant: uesio/appkit.main
                           actions:
                             - uesio/io.toolbar:
                                 right:
@@ -52,7 +52,7 @@ definition:
                                           componentid: transactionList
                                       text: Save
                                       hotkey: "meta+s"
-                                      uesio.variant: usio/pay.primary
+                                      uesio.variant: uesio/appkit.primary
                                       uesio.display:
                                         - type: group
                                           conjunction: OR
@@ -65,7 +65,7 @@ definition:
                                         - signal: wire/CANCEL
                                           wire: transaction
                                       text: Cancel
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                                       uesio.display:
                                         - type: wireHasChanges
                                           operator: EQUALS
@@ -80,7 +80,7 @@ definition:
                                       text: Edit
                                       icon: edit_square
                                       iconFill: false
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                                       uesio.display:
                                         - type: mergeValue
                                           value: EDIT
@@ -105,11 +105,11 @@ definition:
                                       icon: task_alt
                                       iconFill: false
                                       text: Read
-                                      uesio.variant: usio/pay.secondary
+                                      uesio.variant: uesio/appkit.secondary
                           avatar:
-                      - usio/pay.transaction_primary_section:
-                      - usio/pay.audit_info_section:
-                      - usio/pay.delete_section:
+                      - usio/shop.transaction_primary_section:
+                      - uesio/appkit.audit_info_section:
+                      - uesio/appkit.delete_section:
               left:
     - uesio/io.box:
         uesio.variant: uesio/io.section

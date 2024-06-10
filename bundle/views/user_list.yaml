@@ -22,12 +22,12 @@ definition:
   components:
     - uesio/io.viewlayout:
         left:
-          - usio/pay.nav:
+          - usio/shop.nav:
         content:
           - uesio/io.titlebar:
               title: $Collection{user:pluralLabel}
               subtitle: List View
-              uesio.variant: usio/pay.main
+              uesio.variant: uesio/appkit.main
               avatar:
                 - uesio/io.text:
                     text: badge
@@ -38,19 +38,19 @@ definition:
                       - signal: route/NAVIGATE
                         path: usernew
                     text: Add New User
-                    uesio.variant: usio/pay.secondary
+                    uesio.variant: uesio/appkit.secondary
                     uesio.display:
                       - type: wireHasNoChanges
                         wire: user
           - uesio/io.box:
-              uesio.variant: usio/pay.primarysection
+              uesio.variant: uesio/appkit.primarysection
               components:
                 - uesio/io.toolbar:
                     linkedComponentType: uesio/io.table
                     linkedComponentId: userTable
                     left:
                       - uesio/io.searchbox:
-                          uesio.variant: usio/pay.main
+                          uesio.variant: uesio/appkit.main
                           wire: user
                           placeholder: Search Users
                           searchFields:
@@ -58,7 +58,7 @@ definition:
                             - uesio/core.lastname
                             - uesio/core.username
                 - uesio/io.table:
-                    uesio.variant: usio/pay.main
+                    uesio.variant: uesio/appkit.main
                     rowactions:
                       - icon: visibility
                         text: View
@@ -70,7 +70,7 @@ definition:
                             path: user/detail/${uesio/core.id}
                     columns:
                       - components:
-                          - usio/pay.user_tile:
+                          - uesio/appkit.user_tile:
                       - field: uesio/core.email
                     uesio.id: userTable
                     mode: READ

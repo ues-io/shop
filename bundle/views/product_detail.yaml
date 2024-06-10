@@ -4,7 +4,7 @@ definition:
   components:
     - uesio/io.viewlayout:
         left:
-          - usio/pay.nav:
+          - usio/shop.nav:
         content:
           - uesio/core.view:
               view: product_detail_content
@@ -15,4 +15,4 @@ definition:
     recordid:
       type: RECORD
       required: true
-      collection: usio/core.product
+      collection: usio/shop.product
