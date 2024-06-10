@@ -107,6 +107,9 @@ definition:
                                       labels:
                                         source: DATA
                                         timeunit: MONTH
+                                        timeunitfill: YEAR
+                                        format:
+                                          month: short
                             - uesio/io.box:
                                 uesio.variant: uesio/appkit.dashboarditem
                                 components:
