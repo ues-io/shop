@@ -7,7 +7,7 @@ definition:
           - usio/shop.nav:
         content:
           - uesio/core.view:
-              view: user_detail_content
+              view: uesio/appkit.user_detail_content
               uesio.id: detailcontent
               params:
                 recordid: $Param{recordid}
