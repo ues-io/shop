@@ -11,6 +11,7 @@ definition:
               uesio.id: detailcontent
               params:
                 recordid: $Param{recordid}
+                signupmethod: usio/shop.admin
   params:
     recordid:
       type: RECORD

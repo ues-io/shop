@@ -19,103 +19,14 @@ definition:
           param: recordid
   # Components determine the layout and composition of your view
   components:
-    - uesio/io.box:
-        uesio.display:
-          - type: paramIsSet
-            param: recordid
-        components:
-          - uesio/appkit.detail_split:
-              main:
-                - uesio/io.list:
-                    wire: order
-                    uesio.id: orderList
-                    components:
-                      - uesio/io.titlebar:
-                          title: Order Detail
-                          subtitle: $Collection{label}
-                          uesio.variant: uesio/appkit.main
-                          actions:
-                            - uesio/io.toolbar:
-                                right:
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: wire/SAVE
-                                          wires:
-                                            - order
-                                        - signal: component/CALL
-                                          component: uesio/io.list
-                                          componentsignal: SET_READ_MODE
-                                          targettype: specific
-                                          componentid: orderList
-                                      text: Save
-                                      hotkey: "meta+s"
-                                      uesio.variant: uesio/appkit.primary
-                                      uesio.display:
-                                        - type: group
-                                          conjunction: OR
-                                          conditions:
-                                            - type: wireHasChanges
-                                              operator: EQUALS
-                                              wire: order
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: wire/CANCEL
-                                          wire: order
-                                      text: Cancel
-                                      uesio.variant: uesio/appkit.secondary
-                                      uesio.display:
-                                        - type: wireHasChanges
-                                          operator: EQUALS
-                                          wire: order
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: component/CALL
-                                          component: uesio/io.list
-                                          componentsignal: TOGGLE_MODE
-                                          targettype: specific
-                                          componentid: orderList
-                                      text: Edit
-                                      icon: edit_square
-                                      iconFill: false
-                                      uesio.variant: uesio/appkit.secondary
-                                      uesio.display:
-                                        - type: mergeValue
-                                          value: EDIT
-                                          operator: NOT_EQUALS
-                                          sourceValue: $ComponentState{[uesio/io.list][orderList][mode]}
-                                        - type: wireHasNoChanges
-                                          wire: order
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: component/CALL
-                                          component: uesio/io.list
-                                          componentsignal: TOGGLE_MODE
-                                          targettype: specific
-                                          componentid: orderList
-                                      uesio.display:
-                                        - type: mergeValue
-                                          value: EDIT
-                                          operator: EQUALS
-                                          sourceValue: $ComponentState{[uesio/io.list][orderList][mode]}
-                                        - type: wireHasNoChanges
-                                          wire: order
-                                      icon: task_alt
-                                      iconFill: false
-                                      text: Read
-                                      uesio.variant: uesio/appkit.secondary
-                          avatar:
-                      - usio/shop.order_primary_section:
-                      - uesio/appkit.audit_info_section:
-                      - uesio/appkit.delete_section:
-              left:
-    - uesio/io.box:
-        uesio.variant: uesio/io.section
-        uesio.display:
-          - type: paramIsNotSet
-            param: recordid
-        components:
-          - uesio/io.text:
-              text: Select a record
+    - uesio/appkit.layout_detail_split:
+        main:
+          - uesio/appkit.form_detail:
+              wire: order
+              avataricon: shopping_cart
+              content:
+                - usio/shop.order_primary_section:
+        left:
   params:
     recordid:
       type: RECORD

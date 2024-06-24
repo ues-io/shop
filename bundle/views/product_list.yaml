@@ -22,136 +22,20 @@ definition:
         left:
           - usio/shop.nav:
         content:
-          - uesio/io.titlebar:
-              title: $Collection{product:pluralLabel}
-              subtitle: List View
-              uesio.variant: uesio/appkit.main
-              avatar:
-                - uesio/io.text:
-                    uesio.variant: uesio/io.icon
-                    text: sell
-              actions:
-                - uesio/io.toolbar:
-                    linkedComponentType: uesio/io.table
-                    linkedComponentId: productTable
-                    right:
-                      - uesio/io.button:
-                          signals:
-                            - signal: wire/SAVE
-                              wires:
-                                - product
-                            - signal: component/CALL
-                              component: uesio/io.table
-                              componentsignal: SET_READ_MODE
-                              targettype: specific
-                              componentid: productTable
-                            - signal: component/CALL
-                              component: uesio/io.table
-                              componentsignal: CLEAR_SELECTED
-                              targettype: specific
-                              componentid: productTable
-                          text: $Label{uesio/io.save}
-                          hotkey: "meta+s"
-                          uesio.variant: uesio/appkit.primary
-                          uesio.display:
-                            - type: wireHasChanges
-                              wire: product
-                      - uesio/io.button:
-                          signals:
-                            - signal: wire/CANCEL
-                              wire: product
-                            - signal: component/CALL
-                              component: uesio/io.table
-                              componentsignal: SET_READ_MODE
-                              targettype: specific
-                              componentid: productTable
-                            - signal: component/CALL
-                              component: uesio/io.table
-                              componentsignal: CLEAR_SELECTED
-                              targettype: specific
-                              componentid: productTable
-                          uesio.display:
-                            - type: wireHasChanges
-                              wire: product
-                          text: $Label{uesio/io.cancel}
-                          uesio.variant: uesio/appkit.secondary
-                      - uesio/io.button:
-                          signals:
-                            - signal: component/CALL
-                              component: uesio/io.table
-                              componentsignal: TOGGLE_MODE
-                              targettype: specific
-                              componentid: productTable
-                          uesio.display:
-                            - type: mergeValue
-                              value: EDIT
-                              operator: NOT_EQUALS
-                              sourceValue: $ComponentState{[uesio/io.table][productTable][mode]}
-                            - type: wireHasNoChanges
-                              wire: product
-                          text: Edit
-                          icon: edit_square
-                          iconFill: false
-                          uesio.variant: uesio/appkit.secondary
-                      - uesio/io.button:
-                          signals:
-                            - signal: component/CALL
-                              component: uesio/io.table
-                              componentsignal: TOGGLE_MODE
-                              targettype: specific
-                              componentid: productTable
-                          uesio.display:
-                            - type: mergeValue
-                              value: EDIT
-                              operator: EQUALS
-                              sourceValue: $ComponentState{[uesio/io.table][productTable][mode]}
-                            - type: wireHasNoChanges
-                              wire: product
-                          icon: task_alt
-                          iconFill: false
-                          text: Read
-                          uesio.variant: uesio/appkit.secondary
-          - uesio/io.box:
-              uesio.variant: uesio/appkit.primarysection
-              components:
-                - uesio/io.toolbar:
-                    linkedComponentType: uesio/io.table
-                    linkedComponentId: productTable
-                    left:
-                      - uesio/io.searchbox:
-                          uesio.variant: uesio/appkit.main
-                          wire: product
-                          placeholder: Search Products
-                          searchFields:
-                            - usio/shop.name
-                            - usio/shop.description
-                    right:
-                      - uesio/io.button:
-                          text: Quick Create
-                          icon: add_circle
-                          uesio.variant: uesio/appkit.add
-                          signals:
-                            - signal: wire/CREATE_RECORD
-                              wire: product
-                              prepend: true
-                          uesio.display:
-                            - type: mergeValue
-                              sourceValue: $ComponentState{[uesio/io.table][productTable][mode]}
-                              value: EDIT
-                      - uesio/io.button:
-                          text: Delete
-                          icon: delete
-                          uesio.variant: uesio/appkit.delete
-                          signals:
-                            - signal: component/CALL
-                              component: uesio/io.table
-                              componentsignal: GET_SELECTED
-                              targettype: specific
-                              componentid: productTable
-                            - signal: wire/TOGGLE_DELETE_STATUS
-                          uesio.display:
-                            - type: hasValue
-                              value: $ComponentState{[uesio/io.table][productTable][selected->count]}
+          - uesio/appkit.form_list:
+              wire: product
+              avataricon: sell
+              linkedComponentType: uesio/io.table
+              linkedComponentId: productTable
+              filters:
+                - uesio/io.searchbox:
+                    uesio.variant: uesio/appkit.main
+                    wire: product
+                    placeholder: Search Products
+                    searchFields:
+                      - usio/shop.name
+                      - usio/shop.description
+              content:
                 - uesio/io.table:
                     uesio.variant: uesio/appkit.main
                     selectable: true
@@ -192,6 +76,5 @@ definition:
                       - field: usio/shop.slug
                       - field: usio/shop.published
                     uesio.id: productTable
-                    mode: READ
                     wire: product
                     pagesize: 10

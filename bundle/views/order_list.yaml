@@ -18,27 +18,19 @@ definition:
         left:
           - usio/shop.nav:
         content:
-          - uesio/io.titlebar:
-              title: $Collection{order:pluralLabel}
-              subtitle: List View
-              uesio.variant: uesio/appkit.main
-              avatar:
-                - uesio/io.text:
-                    uesio.variant: uesio/io.icon
-                    text: shopping_cart
-          - uesio/io.box:
-              uesio.variant: uesio/appkit.primarysection
-              components:
-                - uesio/io.toolbar:
-                    linkedComponentType: uesio/io.table
-                    linkedComponentId: orderTable
-                    left:
-                      - uesio/io.searchbox:
-                          uesio.variant: uesio/appkit.main
-                          wire: order
-                          placeholder: Search Orders
-                          searchFields:
-                            - usio/shop.product
+          - uesio/appkit.form_list:
+              wire: order
+              avataricon: shopping_cart
+              linkedComponentType: uesio/io.table
+              linkedComponentId: orderTable
+              filters:
+                - uesio/io.searchbox:
+                    uesio.variant: uesio/appkit.main
+                    wire: order
+                    placeholder: Search Orders
+                    searchFields:
+                      - usio/shop.product
+              content:
                 - uesio/io.table:
                     uesio.variant: uesio/appkit.main
                     rowactions:
@@ -51,12 +43,11 @@ definition:
                           - signal: route/NAVIGATE_TO_ASSIGNMENT
                             viewtype: detail
                             recordid: ${uesio/core.id}
-                            collection: usio/pay.order
+                            collection: usio/shop.order
                     columns:
                       - field: usio/shop.product
                       - field: usio/shop.amount
                       - field: usio/shop.transaction
                     uesio.id: orderTable
-                    mode: READ
                     wire: order
                     pagesize: 10

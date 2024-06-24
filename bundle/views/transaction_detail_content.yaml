@@ -22,103 +22,14 @@ definition:
           param: recordid
   # Components determine the layout and composition of your view
   components:
-    - uesio/io.box:
-        uesio.display:
-          - type: paramIsSet
-            param: recordid
-        components:
-          - uesio/appkit.detail_split:
-              main:
-                - uesio/io.list:
-                    wire: transaction
-                    uesio.id: transactionList
-                    components:
-                      - uesio/io.titlebar:
-                          title: ${usio/pay.description}
-                          subtitle: $Collection{label}
-                          uesio.variant: uesio/appkit.main
-                          actions:
-                            - uesio/io.toolbar:
-                                right:
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: wire/SAVE
-                                          wires:
-                                            - transaction
-                                        - signal: component/CALL
-                                          component: uesio/io.list
-                                          componentsignal: SET_READ_MODE
-                                          targettype: specific
-                                          componentid: transactionList
-                                      text: Save
-                                      hotkey: "meta+s"
-                                      uesio.variant: uesio/appkit.primary
-                                      uesio.display:
-                                        - type: group
-                                          conjunction: OR
-                                          conditions:
-                                            - type: wireHasChanges
-                                              operator: EQUALS
-                                              wire: transaction
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: wire/CANCEL
-                                          wire: transaction
-                                      text: Cancel
-                                      uesio.variant: uesio/appkit.secondary
-                                      uesio.display:
-                                        - type: wireHasChanges
-                                          operator: EQUALS
-                                          wire: transaction
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: component/CALL
-                                          component: uesio/io.list
-                                          componentsignal: TOGGLE_MODE
-                                          targettype: specific
-                                          componentid: transactionList
-                                      text: Edit
-                                      icon: edit_square
-                                      iconFill: false
-                                      uesio.variant: uesio/appkit.secondary
-                                      uesio.display:
-                                        - type: mergeValue
-                                          value: EDIT
-                                          operator: NOT_EQUALS
-                                          sourceValue: $ComponentState{[uesio/io.list][transactionList][mode]}
-                                        - type: wireHasNoChanges
-                                          wire: transaction
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: component/CALL
-                                          component: uesio/io.list
-                                          componentsignal: TOGGLE_MODE
-                                          targettype: specific
-                                          componentid: transactionList
-                                      uesio.display:
-                                        - type: mergeValue
-                                          value: EDIT
-                                          operator: EQUALS
-                                          sourceValue: $ComponentState{[uesio/io.list][transactionList][mode]}
-                                        - type: wireHasNoChanges
-                                          wire: transaction
-                                      icon: task_alt
-                                      iconFill: false
-                                      text: Read
-                                      uesio.variant: uesio/appkit.secondary
-                          avatar:
-                      - usio/shop.transaction_primary_section:
-                      - uesio/appkit.audit_info_section:
-                      - uesio/appkit.delete_section:
-              left:
-    - uesio/io.box:
-        uesio.variant: uesio/io.section
-        uesio.display:
-          - type: paramIsNotSet
-            param: recordid
-        components:
-          - uesio/io.text:
-              text: Select a record
+    - uesio/appkit.layout_detail_split:
+        main:
+          - uesio/appkit.form_detail:
+              wire: transaction
+              avataricon: credit_card
+              content:
+                - usio/shop.transaction_primary_section:
+        left:
   params:
     recordid:
       type: RECORD

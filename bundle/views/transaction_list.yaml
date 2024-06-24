@@ -21,29 +21,21 @@ definition:
         left:
           - usio/shop.nav:
         content:
-          - uesio/io.titlebar:
-              title: $Collection{transaction:pluralLabel}
-              subtitle: List View
-              uesio.variant: uesio/appkit.main
-              avatar:
-                - uesio/io.text:
-                    uesio.variant: uesio/io.icon
-                    text: credit_card
-          - uesio/io.box:
-              uesio.variant: uesio/appkit.primarysection
-              components:
-                - uesio/io.toolbar:
-                    linkedComponentType: uesio/io.table
-                    linkedComponentId: transactionTable
-                    left:
-                      - uesio/io.searchbox:
-                          uesio.variant: uesio/appkit.main
-                          wire: transaction
-                          placeholder: Search Transactions
-                          searchFields:
-                            - usio/pay.description
-                            - usio/pay.firstname
-                            - usio/pay.lastname
+          - uesio/appkit.form_list:
+              wire: transaction
+              avataricon: credit_card
+              linkedComponentType: uesio/io.table
+              linkedComponentId: transactionTable
+              filters:
+                - uesio/io.searchbox:
+                    uesio.variant: uesio/appkit.main
+                    wire: transaction
+                    placeholder: Search Transactions
+                    searchFields:
+                      - usio/pay.description
+                      - usio/pay.firstname
+                      - usio/pay.lastname
+              content:
                 - uesio/io.table:
                     uesio.variant: uesio/appkit.main
                     rowactions:
@@ -66,6 +58,5 @@ definition:
                       - field: usio/pay.description
                       - field: usio/pay.confirmation
                     uesio.id: transactionTable
-                    mode: READ
                     wire: transaction
                     pagesize: 10

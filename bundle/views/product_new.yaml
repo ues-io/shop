@@ -19,40 +19,10 @@ definition:
         left:
           - usio/shop.nav:
         content:
-          - uesio/appkit.detail_split:
+          - uesio/appkit.layout_detail_split:
               main:
-                - uesio/io.list:
+                - uesio/appkit.form_new:
                     wire: product
-                    uesio.id: productList
-                    mode: EDIT
-                    components:
-                      - uesio/io.titlebar:
-                          title: New Product
-                          subtitle: "${name}"
-                          uesio.variant: uesio/appkit.main
-                          actions:
-                            - uesio/io.group:
-                                components:
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: wire/SAVE
-                                          wires:
-                                            - product
-                                        - signal: route/NAVIGATE_TO_ASSIGNMENT
-                                          collection: usio/shop.product
-                                          viewtype: detail
-                                          recordid: ${uesio/core.id}
-                                      text: Create Product
-                                      hotkey: "meta+s"
-                                      uesio.variant: uesio/appkit.primary
-                                  - uesio/io.button:
-                                      signals:
-                                        - signal: wire/RESET
-                                          wire: product
-                                      text: Reset
-                                      uesio.variant: uesio/appkit.secondary
-                          avatar:
-                            - uesio/io.text:
-                                uesio.variant: uesio/io.icon
-                                text: sell
+                    avataricon: sell
+                    content:
                       - usio/shop.product_primary_section:
