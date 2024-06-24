@@ -90,12 +90,9 @@ definition:
                             root:
                               - lg:grid-rows-1
                           items:
-                            - uesio/io.box:
-                                uesio.variant: uesio/appkit.dashboarditem
-                                components:
-                                  - uesio/io.titlebar:
-                                      title: Revenue
-                                      uesio.variant: uesio/appkit.sub
+                            - uesio/appkit.section_dashboard:
+                                title: Revenue
+                                content:
                                   - uesio/io.linechart:
                                       uesio.variant: uesio/appkit.main
                                       series:
@@ -110,12 +107,9 @@ definition:
                                         timeunitfill: YEAR
                                         format:
                                           month: short
-                            - uesio/io.box:
-                                uesio.variant: uesio/appkit.dashboarditem
-                                components:
-                                  - uesio/io.titlebar:
-                                      title: Orders This Week
-                                      uesio.variant: uesio/appkit.sub
+                            - uesio/appkit.section_dashboard:
+                                title: Orders This Week
+                                content:
                                   - uesio/io.barchart:
                                       uesio.variant: uesio/appkit.main
                                       series:
@@ -134,53 +128,35 @@ definition:
                             root:
                               - lg:grid-rows-1
                           items:
-                            - uesio/io.box:
-                                uesio.variant: uesio/appkit.dashboarditem
-                                components:
-                                  - uesio/io.titlebar:
-                                      title: New Orders
-                                      uesio.variant: uesio/appkit.sub
-                                  - uesio/io.box:
-                                      uesio.variant: uesio/appkit.dashboardpanel
+                            - uesio/appkit.section_dashboard:
+                                title: New Orders
+                                content:
+                                  - uesio/io.deck:
+                                      wire: neworders
+                                      mode: READ
+                                      id: neworders
+                                      uesio.variant: uesio/appkit.tiles
                                       components:
-                                        - uesio/io.deck:
-                                            wire: neworders
-                                            mode: READ
-                                            id: neworders
-                                            uesio.variant: uesio/appkit.tiles
-                                            components:
-                                              - usio/shop.order_tile:
-                                                  showAmountInfo: true
-                            - uesio/io.box:
-                                uesio.variant: uesio/appkit.dashboarditem
-                                components:
-                                  - uesio/io.titlebar:
-                                      title: New Products
-                                      uesio.variant: uesio/appkit.sub
-                                  - uesio/io.box:
-                                      uesio.variant: uesio/appkit.dashboardpanel
+                                        - usio/shop.order_tile:
+                                            showAmountInfo: true
+                            - uesio/appkit.section_dashboard:
+                                title: New Products
+                                content:
+                                  - uesio/io.deck:
+                                      wire: newproducts
+                                      mode: READ
+                                      id: newproducts
+                                      uesio.variant: uesio/appkit.tiles
                                       components:
-                                        - uesio/io.deck:
-                                            wire: newproducts
-                                            mode: READ
-                                            id: newproducts
-                                            uesio.variant: uesio/appkit.tiles
-                                            components:
-                                              - usio/shop.product_tile:
-                            - uesio/io.box:
-                                uesio.variant: uesio/appkit.dashboarditem
-                                components:
-                                  - uesio/io.titlebar:
-                                      title: New Transactions
-                                      uesio.variant: uesio/appkit.sub
-                                  - uesio/io.box:
-                                      uesio.variant: uesio/appkit.dashboardpanel
+                                        - usio/shop.product_tile:
+                            - uesio/appkit.section_dashboard:
+                                title: New Transactions
+                                content:
+                                  - uesio/io.deck:
+                                      wire: newtransactions
+                                      mode: READ
+                                      id: newtransactions
+                                      uesio.variant: uesio/appkit.tiles
                                       components:
-                                        - uesio/io.deck:
-                                            wire: newtransactions
-                                            mode: READ
-                                            id: newtransactions
-                                            uesio.variant: uesio/appkit.tiles
-                                            components:
-                                              - usio/shop.transaction_tile:
-                                                  showAmountInfo: true
+                                        - usio/shop.transaction_tile:
+                                            showAmountInfo: true
