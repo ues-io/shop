@@ -17,19 +17,10 @@ definition:
                 - grid
                 - gap-4
             components:
-              - uesio/io.group:
-                  uesio.variant: uesio/builder.appcrumb
-                  components:
-                    - uesio/io.image:
-                        uesio.variant: uesio/builder.logo
-                        uesio.id: img-uesio-logo
-                        height: 32
-                        file: uesio/core.logowhite
-                    - uesio/builder.icontile:
-                        title: Usio Shop
-                        icon: bubble_chart
-                        iconcolor: "#fb7185"
-                        tileVariant: uesio/builder.apptag
+              - uesio/appkit.tile_app:
+                  title: Uesio Shop
+                  icon: bubble_chart
+                  iconcolor: "#fb7185"
               - uesio/io.navsection:
                   content:
                     - uesio/io.box:
@@ -191,7 +182,7 @@ definition:
                 - p-4
             components:
               - uesio/io.titlebar:
-                  uesio.variant: uesio/builder.profile
+                  uesio.variant: uesio/appkit.item_small
                   title: $User{username}
                   subtitle: $User{profileLabel}
                   avatar:
@@ -203,19 +194,21 @@ definition:
                         text: $User{initials}
                         image: $User{picture}
                   actions:
-                    - uesio/io.button:
-                        uesio.variant: uesio/appkit.navicon
-                        icon: logout
-                        uesio.id: logout
-                        signals:
-                          - signal: "user/LOGOUT"
-                    - uesio/io.button:
-                        uesio.variant: uesio/appkit.navicon
-                        uesio.id: user-profile
-                        icon: account_circle
-                        signals:
-                          - signal: "route/NAVIGATE"
-                            path: myprofile
+                    - uesio/io.group:
+                        components:
+                          - uesio/io.button:
+                              uesio.variant: uesio/appkit.navicon
+                              icon: logout
+                              uesio.id: logout
+                              signals:
+                                - signal: "user/LOGOUT"
+                          - uesio/io.button:
+                              uesio.variant: uesio/appkit.navicon
+                              uesio.id: user-profile
+                              icon: account_circle
+                              signals:
+                                - signal: "route/NAVIGATE"
+                                  path: myprofile
 title: Navigation Component
 discoverable: true
 description: A component for app navigation

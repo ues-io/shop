@@ -2,8 +2,6 @@ name: usio/shop
 dependencies:
   uesio/appkit:
     version: v0.0.1
-  uesio/builder:
-    version: v0.0.1
   uesio/core:
     version: v0.0.1
   uesio/io:
