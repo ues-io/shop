@@ -30,6 +30,22 @@ definition:
               avataricon: credit_card
               imagefield: usio/shop.image
               initials: ${product:initials}
+              extra_actions:
+                - uesio/io.button:
+                    signals:
+                      - signal: route/NAVIGATE
+                        path: buy/${slug}
+                    text: View Listing
+                    icon: visibility
+                    iconFill: false
+                    uesio.variant: uesio/appkit.secondary
+                    uesio.display:
+                      - type: mergeValue
+                        operator: NOT_EQUALS
+                        sourceValue: $Text{$FieldMode{}}
+                        value: EDIT
+                      - type: wireHasNoChanges
+                        wire: product
               content:
                 - usio/shop.product_primary_section:
         left:
